@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="jars/mysql-connector-java-5.1.25-bin.jar"/>
+	<classpathentry kind="lib" path="jars/poi-3.12-beta1-20150228.jar"/>
+	<classpathentry kind="lib" path="jars/poi-examples-3.12-beta1-20150228.jar"/>
+	<classpathentry kind="lib" path="jars/poi-excelant-3.12-beta1-20150228.jar"/>
+	<classpathentry kind="lib" path="jars/poi-ooxml-3.12-beta1-20150228.jar"/>
+	<classpathentry kind="lib" path="jars/poi-ooxml-schemas-3.12-beta1-20150228.jar"/>
+	<classpathentry kind="lib" path="jars/poi-scratchpad-3.12-beta1-20150228.jar"/>
+	<classpathentry kind="lib" path="jars/saxon-8.7.jar"/>
+	<classpathentry kind="lib" path="jars/SaxonLiaison.jar"/>
+	<classpathentry kind="lib" path="jars/selenium-server-standalone-2.45.0.jar"/>
+	<classpathentry kind="lib" path="jars/testng-6.8.jar"/>
+	<classpathentry kind="lib" path="jars/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
