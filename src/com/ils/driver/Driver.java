@@ -13,12 +13,13 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.openqa.selenium.Alert;
 
 import com.ils.genericmethods.Generic_Methods;
 
 public class Driver extends Generic_Methods {
 
-	static String FCA = "https://hub.uhg.com/";
+	static String FCA = "https://cie-dev.my.af.mil/CIEDEV-ESS/ess/";
 	static String FCB = "https://www.geeksforgeeks.org";
 	static String FCD = "https://www.programiz.com";
 	static String fn_env = null;
@@ -28,10 +29,10 @@ public class Driver extends Generic_Methods {
 		super();
 
 	}
-	public static void main(String[] args) throws InvalidFormatException, IOException {
+	public static void main(String[] args) throws InvalidFormatException, IOException, InterruptedException {
 
 		String current_path = System.getProperty("user.dir");
-		File Excel_File = new File(current_path + "\\Excel_2.xlsx");
+		File Excel_File = new File(current_path + "\\ILS.xlsx");
 		FileInputStream fis = new FileInputStream(Excel_File);
 		Workbook excelbook = WorkbookFactory.create(fis);
 		Sheet sheet = excelbook.getSheet("Sheet1");
@@ -53,9 +54,9 @@ public class Driver extends Generic_Methods {
 				String Action = sheet.getRow(i).getCell(2).getStringCellValue();
 				String Locator = sheet.getRow(i).getCell(3).getStringCellValue();
 				String Value = sheet.getRow(i).getCell(4).getStringCellValue();
-				String Value_2 = sheet.getRow(i).getCell(5).getStringCellValue();
+				
 
-				System.out.println("---Action---" + Action);
+				System.out.println("Action---" + Action);
 
 				switch (Action) {
 
@@ -70,17 +71,22 @@ public class Driver extends Generic_Methods {
 					getelement(Locator).sendKeys(Value);
 					break;
 				case "click":
-					System.out.println("Now WE ARE in CLICK ACtion");
 					getelement(Locator).click();
-
+					Thread.sleep(1000);
 					break;
 				case "submit":
-					System.out.println("This is 4 case");
 					getelement(Locator).submit();
-
+					Thread.sleep(1000);
+					break;
+				case "close":
+					driver.quit();
+					break;
+				case "Alert":
+					Thread.sleep(1000);
+					Alert AR = driver.switchTo().alert();
+					AR.accept();
 					break;
 				case "get":
-					System.out.println("This is 4 case");
 					String getstr = getelement(Locator).getText();
 					sheet.getRow(i).getCell(3).setCellValue(getstr);
 					System.out.println("Get Text value is -" + getstr);
@@ -91,12 +97,14 @@ public class Driver extends Generic_Methods {
 
 				}
 
-				System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+				System.out.println(">>>>>>>>>>>>>>>>>>>>> Line number -> " + i + " is completed");
 
 			} else {
-				System.out.println("------Not Matched" + i);
+				//System.out.println("Line number not executed - " + i);
 			}
 		}
+		
+		System.out.println("................................. TEST CASE END .......................................");
 
 	}
 
