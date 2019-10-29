@@ -1,9 +1,14 @@
 package com.ils.genericmethods;
 
 import java.io.IOException;
-
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -83,5 +88,60 @@ public class Generic_Methods {
 		// driver.manage().window().maximize();
 
 	}
+	
+	
+	public static CellStyle passobj(Workbook wbook) {
+		
+		CellStyle passobj = wbook.createCellStyle();
+		Short pass_col_num = IndexedColors.BRIGHT_GREEN.getIndex();
+		passobj.setFillBackgroundColor(pass_col_num);
+		passobj.setFillForegroundColor(pass_col_num);
+		passobj.setFillPattern(CellStyle.SOLID_FOREGROUND);
+		passobj.setBorderBottom(XSSFCellStyle.SOLID_FOREGROUND);
+		passobj.setBorderTop(XSSFCellStyle.BORDER_THIN);
+		passobj.setBorderRight(XSSFCellStyle.BORDER_THIN);
+		passobj.setBorderLeft(XSSFCellStyle.BORDER_THIN);
+		return passobj;
+		
+	}
+
+	public static CellStyle failobj(Workbook wbook) {
+		
+		CellStyle failobj = wbook.createCellStyle();
+		Short pass_col_num = IndexedColors.RED.getIndex();
+		failobj.setFillBackgroundColor(pass_col_num);
+		failobj.setFillForegroundColor(pass_col_num);
+		failobj.setFillPattern(CellStyle.SOLID_FOREGROUND);
+		failobj.setBorderBottom(XSSFCellStyle.SOLID_FOREGROUND);
+		failobj.setBorderTop(XSSFCellStyle.BORDER_THIN);
+		failobj.setBorderRight(XSSFCellStyle.BORDER_THIN);
+		failobj.setBorderLeft(XSSFCellStyle.BORDER_THIN);
+		return failobj;
+		
+	}
+	
+	public static CellStyle skipobj(Workbook wbook) {
+		
+		CellStyle skipobj= wbook.createCellStyle();
+		Short pass_col_num = IndexedColors.LIGHT_YELLOW.getIndex();
+		skipobj.setFillBackgroundColor(pass_col_num);
+		skipobj.setFillForegroundColor(pass_col_num);
+		skipobj.setFillPattern(CellStyle.SOLID_FOREGROUND);
+		skipobj.setBorderBottom(XSSFCellStyle.SOLID_FOREGROUND);
+		skipobj.setBorderTop(XSSFCellStyle.BORDER_THIN);
+		skipobj.setBorderRight(XSSFCellStyle.BORDER_THIN);
+		skipobj.setBorderLeft(XSSFCellStyle.BORDER_THIN);
+		return skipobj;
+		
+	}
+	
+	public static String timestamp(){
+		String str=DateFormat.getDateTimeInstance().format(new Date());
+		str=str.replaceAll(":", "_");
+		return str;
+			
+		}
+
+
 
 }
